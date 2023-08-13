@@ -24,7 +24,8 @@
         "eject": "react-scripts eject",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
-        "format": "prettier --write \"**/*.{js,jsx,json}\""
+        "format:check": "prettier --write \"**/*.{js,jsx,json}\"",
+        "format": "prettier --check \"**/*.{js,jsx,json}\""
     },
     "eslintConfig": {
         "extends": [
@@ -45,6 +46,7 @@
         ]
     },
     "devDependencies": {
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
         "eslint": "^8.46.0",
         "eslint-config-prettier": "^9.0.0",
         "eslint-plugin-react": "^7.33.1",

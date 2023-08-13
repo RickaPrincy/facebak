@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.rounded-15{
+    @apply rounded-[15px] 
+}
+
+body{
+    @apply bg-gray-100
+}
+
+.profil_img{
+    @apply w-[50px] h-[50px] rounded-[50%]
+}
