@@ -3,7 +3,7 @@ import { Avatar, Paper, Box, Typography } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import AddIcon from '@mui/icons-material/Add';
 
-export default function SideOne() {
+function SideOne() {
     return (
         <>
             <Box sx={{ paddingLeft: 8 }}>
@@ -48,3 +48,6 @@ export default function SideOne() {
         </>
     );
 }
+
+
+export default SideOne;

@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import { FormControlLabel } from '@mui/material';
 import VpnKeyOffIcon from '@mui/icons-material/VpnKeyOff';
 
-export function SideTwo() {
+function SideTwo() {
     return (
         <>
             <Grid item xs={12} sm={8} md={5} component={Paper} elevation={8} square sx={{ minWidth: 500, mt:6}}>
@@ -39,3 +39,5 @@ export function SideTwo() {
         </>
     );
 }
+
+export default SideTwo;

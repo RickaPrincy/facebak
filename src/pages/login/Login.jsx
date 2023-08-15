@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { SideTwo } from './SideTwo';
+import SideTwo from './SideTwo';
 import SideOne from './SideOne';
 
-export function Login() {
+function Login() {
     return (
         <>
             <Box sx={{
@@ -19,3 +19,5 @@ export function Login() {
         </>
     );
 }
+
+export default Login;
