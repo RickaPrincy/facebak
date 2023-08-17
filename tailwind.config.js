@@ -6,6 +6,9 @@ export default {
             screens:{
                 'mm': '0px',
                 'smm': '400px'
+            },
+            colors:{
+                'gra-blue': '#595959'
             }
         }
     },

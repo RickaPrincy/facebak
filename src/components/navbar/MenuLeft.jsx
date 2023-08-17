@@ -1,54 +1,70 @@
 import React from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import { AccountCircle, PeopleAlt, Book, PhotoLibrary, Group, Message, ExitToApp } from '@mui/icons-material';
+import { 
+    Drawer,
+    List,
+    ListItemIcon,
+    ListItemText,
+    ListItemButton
+} from '@mui/material';
+
+import { 
+    AccountCircle,
+    PeopleAlt,
+    Book,
+    PhotoLibrary,
+    Group,
+    Message,
+    ExitToApp 
+} from '@mui/icons-material';
+
 import { Link } from 'react-router-dom';
 
 function MenuLeft() {
     return (
-        <Drawer variant="permanent" anchor="left" sx={{ width: 240 }} className="bg-orange-500">
+        <Drawer variant='permanent' anchor='left'>
             <List>
-                <ListItem button component={Link} to="/profil" className="text-white">
+                <ListItemButton component={Link} to='/profil'>
                     <ListItemIcon>
                         <AccountCircle />
                     </ListItemIcon>
-                    <ListItemText primary="Profil" />
-                </ListItem>
-                <ListItem button component={Link} to="/amis" className="text-white">
+                    <ListItemText primary='Profil'/>
+                </ListItemButton>
+                <ListItemButton component={Link} to='/amis'>
                     <ListItemIcon>
                         <PeopleAlt />
                     </ListItemIcon>
-                    <ListItemText primary="Amis" />
-                </ListItem>
-                <ListItem button component={Link} to="/pages" className="text-white">
+                    <ListItemText primary='Amis'/>
+                </ListItemButton>
+                <ListItemButton component={Link} to='/pages'>
                     <ListItemIcon>
                         <Book />
                     </ListItemIcon>
-                    <ListItemText primary="Pages" />
-                </ListItem>
-                <ListItem button component={Link} to="/souvenirs" className="text-white">
+                    <ListItemText primary='Pages'/>
+                </ListItemButton>
+                <ListItemButton component={Link} to='/souvenirs'>
                     <ListItemIcon>
                         <PhotoLibrary />
                     </ListItemIcon>
-                    <ListItemText primary="Souvenirs" />
-                </ListItem>
-                <ListItem button component={Link} to="/groupes" className="text-white">
+                    <ListItemText primary='Souvenirs'/>
+                </ListItemButton>
+                <ListItemButton component={Link} to='/groupes'>
                     <ListItemIcon>
                         <Group />
                     </ListItemIcon>
-                    <ListItemText primary="Groupes" />
-                </ListItem>
-                <ListItem button component={Link} to="/messagerie" className="text-white">
+                    <ListItemText primary='Groupes'/>
+                </ListItemButton>
+                <ListItemButton component={Link} to='/messagerie'>
                     <ListItemIcon>
                         <Message />
                     </ListItemIcon>
-                    <ListItemText primary="Messagerie" />
-                </ListItem>
-                <ListItem button className="text-white">
+                    <ListItemText primary='Messagerie'/>
+                </ListItemButton>
+                <ListItemButton>
                     <ListItemIcon>
                         <ExitToApp />
                     </ListItemIcon>
-                    <ListItemText primary="Déconnexion" />
-                </ListItem>
+                    <ListItemText primary='Déconnexion'/>
+                </ListItemButton>
             </List>
         </Drawer>
     );

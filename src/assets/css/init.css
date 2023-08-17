@@ -13,3 +13,15 @@ body{
 .profil_img{
     @apply w-[50px] h-[50px] rounded-[50%]
 }
+
+.field-rounded{
+    @apply text-[15px] text-[rgba(255,255,255,.8)]
+}
+
+.no-border::after, .no-border:before{
+    @apply border-0 w-0
+}
+
+.field-rounded + fieldset{
+    border: none !important;
+}

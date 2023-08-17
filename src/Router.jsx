@@ -1,13 +1,21 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { 
+    Route,
+    Routes 
+} from 'react-router-dom';
+
 import { 
     Home, 
     Login 
 } from './pages';
 
+import { NavMenu } from './components';
+
 function Router() {
     return (
         <>
+            <NavMenu/>
+            {/* <MenuLeft /> */}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
