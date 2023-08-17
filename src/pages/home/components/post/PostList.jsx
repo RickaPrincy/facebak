@@ -6,7 +6,7 @@ function PostList() {
     const [postList, setPostList] = useState([]);
 
     const fetchPostList = () => {
-        axios.get('http://localhost:8080/posts')
+        axios.get('/posts')
             .then(response => setPostList(response.data))
             .catch(error => {
                 console.log(error);
