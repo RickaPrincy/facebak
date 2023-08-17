@@ -52,7 +52,7 @@ function ProfilPage(){
                         <Box sx={{ backgroundColor: '#b0bec5', p: 2, textAlign: 'center' }}>
                             <Typography variant="body1">Web Developer</Typography>
                             <Typography variant="body1">HardWinne Group</Typography>
-                            <Typography variant="body1">Haute ecole d informatique</Typography>
+                            <Typography variant="body1">2023-08-16</Typography>
                         </Box>
                     </Box>
                     <Box sx={{ p: 2, marginTop: 4 }}>
