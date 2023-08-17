@@ -2,7 +2,8 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { 
     Home, 
-    Login 
+    Login, 
+    ProfilPage
 } from './pages';
 
 function Router() {
@@ -11,6 +12,7 @@ function Router() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/profil" element={<ProfilPage/>}/>
                 <Route path="*" element={<h1>Page not found</h1>} />
             </Routes>
         </>

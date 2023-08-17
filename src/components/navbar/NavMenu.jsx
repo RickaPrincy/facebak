@@ -43,7 +43,7 @@ function NavMenu() {
 
     return (
         <Grid container spacing={3}>
-            <AppBar position="fixed" sx={{ background: '#b2dfdb', width: '87%'}}>
+            <AppBar position="fixed" sx={{ background: '#64b5f6', width: '87%'}}>
                 <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Typography variant="h6" noWrap component="div">
                         F
@@ -73,21 +73,21 @@ function NavMenu() {
                     </Box>
                     {!isMobile && (
                         <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                            <BottomNavigation sx={{ width: 30, background: '#b2dfdb' }} >
+                            <BottomNavigation sx={{ width: 30, background: '#64b5f6' }} >
                                 <BottomNavigationAction
                                     label="Messagerie"
                                     value="messagerie"
                                     icon={<ChatOutlined />}
                                 />
                             </BottomNavigation>
-                            <BottomNavigation sx={{ width: 100, background: '#b2dfdb' }} >
+                            <BottomNavigation sx={{ width: 100, background: '#64b5f6' }} >
                                 <BottomNavigationAction
                                     label="Notifications"
                                     value="notifications"
                                     icon={<NotificationsOutlined />}
                                 />
                             </BottomNavigation>
-                            <BottomNavigation sx={{ width: 100, background: '#b2dfdb' }} >
+                            <BottomNavigation sx={{ width: 100, background: '#64b5f6' }} >
                                 <BottomNavigationAction
                                     label="Profil"
                                     value="profil"

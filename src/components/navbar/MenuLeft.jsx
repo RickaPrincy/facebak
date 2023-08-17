@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function MenuLeft() {
     return (
-        <Drawer variant="permanent" anchor="left" sx={{ width: 240 }} className="bg-orange-500">
+        <Drawer variant="permanent" anchor="left" sx={{ width: 240 }}>
             <List>
                 <ListItem button component={Link} to="/profil" className="text-white">
                     <ListItemIcon>
