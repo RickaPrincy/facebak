@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import SideTwo from './SideTwo';
+import Signup from './Signup';
 import SideOne from './SideOne';
 
 function Login() {
@@ -14,7 +14,7 @@ function Login() {
                 alignItems: 'center',
             }}>
                 <SideOne/>
-                <SideTwo/>
+                <Signup/>
             </Box>
         </>
     );
