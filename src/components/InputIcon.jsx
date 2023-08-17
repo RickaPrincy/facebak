@@ -6,7 +6,7 @@ import {
 
 import React, { useState } from 'react';
 
-function InputIcon({ onSubmit=()=>{ }, sx = {}, icon, onChange, placeholder =''}) {
+function InputIcon({ onSubmit=()=>{ }, sx = {}, icon, onChange, placeholder ='', className =''}) {
     const [word, setWord] = useState('');
 
     const style = 
@@ -31,7 +31,7 @@ function InputIcon({ onSubmit=()=>{ }, sx = {}, icon, onChange, placeholder =''}
     };
 
     return (
-        <FormControl component={'form'} onSubmit={handlerSubmit}>
+        <FormControl component={'form'} onSubmit={handlerSubmit} className={className}>
             <Input
                 className='no-border field-rounded'
                 size='small'

@@ -25,3 +25,9 @@ body{
 .field-rounded + fieldset{
     border: none !important;
 }
+
+@media (max-width: 650px){
+    .force-hidden{
+        display: none !important;
+    } 
+}

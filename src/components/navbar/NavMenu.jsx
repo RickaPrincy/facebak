@@ -1,5 +1,6 @@
 import {
     Comment,
+    Home,
     Notifications,
     PersonAdd,
     Search
@@ -16,13 +17,34 @@ import React from 'react';
 import InputIcon from '../InputIcon';
 import MenuLink from './MenuLink';
 import { Link } from 'react-router-dom';
+import ResponsiveMenu from './ResponsiveMenu';
 
 function NavMenu() {
-
     const menuLinks = [
-        { value: 5, to: '/message', icon: <Comment sx={{ color: 'rgba(255,255,255,.8)' }} /> },
-        { value: 8, to: '/notification', icon: <Notifications sx={{ color: 'rgba(255,255,255,.8)' }} /> },
-        { value: 1, to: '/amis', icon: <PersonAdd sx={{ color: 'rgba(255,255,255,.8)' }} /> }
+        {
+            value: 0,
+            to: '/',
+            icon: <Home className='md:text-[rgba(255,255,255,.8)]'/>,
+            text: 'Home'
+        },
+        {
+            value: 1,
+            to: '/amis',
+            icon: <PersonAdd className='md:text-[rgba(255,255,255,.8)]'/>,
+            text: 'Amis'
+        },
+        {
+            value: 5,
+            to: '/message',
+            icon: <Comment className='md:text-[rgba(255,255,255,.8)]'/>,
+            text: 'Messages'
+        },
+        {
+            value: 8,
+            to: '/notification',
+            icon: <Notifications className='md:text-[rgba(255,255,255,.8)]'/>,
+            text: 'Notifications'
+        }
     ];
 
     const handlerFindSomething = (values) => {
@@ -39,26 +61,28 @@ function NavMenu() {
                         </Link>
                     </Typography>
                     <InputIcon
+                        className={'force-hidden'}
                         icon={<Search sx={{ color: 'rgba(255,255,255,.7)', paddingBottom: 0.4 }} />}
                         onSubmit={handlerFindSomething}
                         placeholder='Find Something'
                     />
                 </Box>
-                <Box component='div' className='flex items-center gap-5' >
+                <div className='mm:hidden md:flex items-center gap-5' >
                     <Box component='div' className='flex me-5 items-center gap-5' >
                         {
                             menuLinks.map((el, index) => <MenuLink key={index} to={el.to} icon={el.icon} value={el.value} />)
                         }
                     </Box>
-                    <Typography color={'rgba(255,255,255,.9) text-[17px]'}>John Doe</Typography>
+                    <h1 className={'text-[rgba(255,255,255,.9)] text-[17px] mm:hidden md:block'}>John Doe</h1>
                     <Link to={'/profile'}>
                         <img
-                            src="temp_user.jpg"
-                            alt="Your Profile"
+                            src='temp_user.jpg'
+                            alt='Your Profile'
                             className='w-[50px] rounded-[50%] border-[0.5px] border-[rgba(255,255,255,.7)] h-[50px] cursor-pointer'
                         />
                     </Link>
-                </Box>
+                </div>
+                <ResponsiveMenu listMenu={menuLinks} />
             </Toolbar>
         </AppBar>
     );
