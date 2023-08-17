@@ -30,17 +30,17 @@ function ProfilPage(){
                                 <Grid container spacing={2} justifyContent="center">
                                     <Grid item>
                                         <Typography variant="body1">
-                                            <strong>253</strong> Photos
+                                            <strong>20</strong> Photos
                                         </Typography>
                                     </Grid>
                                     <Grid item>
                                         <Typography variant="body1">
-                                            <strong>1026</strong> Followers
+                                            <strong>50</strong> Followers
                                         </Typography>
                                     </Grid>
                                     <Grid item>
                                         <Typography variant="body1">
-                                            <strong>478</strong> Following
+                                            <strong>25</strong> Following
                                         </Typography>
                                     </Grid>
                                 </Grid>
