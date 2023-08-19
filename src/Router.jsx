@@ -6,7 +6,8 @@ import {
 
 import { 
     Home, 
-    Login 
+    Login, 
+    Profile
 } from './pages';
 
 import { NavMenu } from './components';
@@ -19,6 +20,7 @@ function Router() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/profile" element={<Profile/>} />
                 <Route path="*" element={<h1>Page not found</h1>} />
             </Routes>
         </>

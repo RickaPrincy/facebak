@@ -1,9 +1,9 @@
 import Home from './home/Home';
 import Login from './login/Login';
-import ProfilPage from './profil/ProfilPage';
+import Profile from './profile/Profile';
 
 export {
     Home,
     Login,
-    ProfilPage
+    Profile
 };

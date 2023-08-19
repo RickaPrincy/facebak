@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Card, Typography, Button, Grid, Box } from '@mui/material';
 import PhotoRecentsProfil from './PhotoRecentsProfil';
 
-function ProfilPage(){
+function Profile(){
     return (
         <Container>
             <Grid container justifyContent="center" alignItems="center" sx={{ height: '90vh' }}>
@@ -65,4 +65,4 @@ function ProfilPage(){
     );
 };
 
-export default ProfilPage;
+export default Profile;
