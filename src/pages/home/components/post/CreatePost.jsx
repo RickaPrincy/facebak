@@ -1,4 +1,4 @@
-import { Box, Button } from '@mui/material';
+import { Box, Button, IconButton } from '@mui/material';
 import React from 'react';
 import { usePopup } from '../../../../hooks';
 import PostField from './PostField';
@@ -12,15 +12,17 @@ function CreatePost() {
 
     return (
         <>
-            <div onClick={toggleAddPost} className="mx-auto mm:w-full md:w-[fit-content] md:min-w-[700px] cursor-pointer rounded-15 mt-5 shadow-md w-[fit-content] p-5 bg-white">
+            <div className="mx-auto mm:w-full md:w-[fit-content] md:min-w-[700px] cursor-pointer rounded-15 mt-5 shadow-md w-[fit-content] p-5 bg-white">
                 <Box display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
                     <h2 className="text-blue-950 font-bold text-[16px]">Create Post</h2>
-                    <EditIcon color='primary' className='hover:bg-gray-200 rounded-[50%]' />
+                    <IconButton onClick={toggleAddPost}>
+                        <EditIcon color='primary' />
+                    </IconButton>
                 </Box>
                 <hr className="bg-gray-500 my-2" />
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }} mb={2}>
                     <img src="temp_user.jpg" alt="just some image of user" className="w-[50px] rounded-[50%] h-[50px]" />
-                    <Button sx={{ textTransform: 'none', color: '#6b6b47' }} className='w-full text-end m-0'>
+                    <Button onClick={toggleAddPost} sx={{ textTransform: 'none', color: '#6b6b47' }} className='w-full text-end m-0'>
                         Share what are thinking
                     </Button>
                 </Box>
