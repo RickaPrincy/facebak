@@ -21,7 +21,7 @@ function SideTwo() {
                         Login
                     </Typography>
                     <TextField size='small' fullWidth variant='outlined' id='just-some-text-field' label='Your Name' sx={{ color: 'orange' }} />
-                    <TextField size='small' fullWidth variant='outlined' id='just-some-password-field' label='Password' sx={{ color: 'orange' }} />
+                    <TextField size='small' type='password' fullWidth variant='outlined' id='just-some-password-field' label='Password' sx={{ color: 'orange' }} />
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
                         label="Remember me"
