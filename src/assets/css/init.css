@@ -31,3 +31,15 @@ body{
         display: none !important;
     } 
 }
+
+body::-webkit-scrollbar {
+    width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+    @apply bg-[rgba(0,0,255,.8)]
+}
+
+body::-webkit-scrollbar-track {
+    background-color: transparent;
+}

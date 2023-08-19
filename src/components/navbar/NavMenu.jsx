@@ -52,7 +52,7 @@ function NavMenu() {
     };
 
     return (
-        <AppBar position='sticky' sx={{ backgroundColor: '#34465d' }}>
+        <AppBar position='sticky' sx={{ backgroundColor: '#34465d', width: '100% !important' }}>
             <Toolbar className='flex justify-between w-full'>
                 <Box component='div' className='flex items-center gap-5' >
                     <Typography sx={{ fontSize: 20, fontWeight: 'bold' }} variant='h1'>
