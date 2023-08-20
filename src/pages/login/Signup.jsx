@@ -43,92 +43,90 @@ export default function Signup() {
 
     return (
         <>
-            <Grid
-                component={Paper}
-                elevation={6}
-                square
-                sx={{
-                    mt: 6,
-                    p: 4,
-                    minWidth: 400
-                }}
-            >
-                <Box
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'center'
-                    }}
+            <div className='md:min-w-[400px] mt-6'>
+                <Grid
+                    component={Paper}
+                    elevation={6}
+                    square
+                    sx={{ p: 4 }}
                 >
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'center'
+                        }}
+                    >
 
-                    <CssBaseline />
-                    <div>
-                        <Typography component="h1" variant="h5" sx={{ mt: 2, fontWeight: 'bold', display: 'flex', justifyContent: 'center' }}>
-                            <MoodIcon color="primary" />
-                            Sign In
-                        </Typography>
-                        <FormControl onSubmit={handleSubmit}>
-                            <TextField
-                                variant="outlined"
-                                margin="normal"
-                                fullWidth
-                                InputProps={{
-                                    id: '3'
-                                }}
-                                label="Name"
-                                size="small"
-                                value={data.username}
-                                onChange={handleChange}
-                            />
-                            <TextField
-                                variant="outlined"
-                                margin="normal"
-                                fullWidth
-                                InputProps={{
-                                    id: '2'
-                                }}
-                                label="Email Address"
-                                name="email"
-                                autoComplete="email"
-                                size="small"
-                                value={data.email}
-                                onChange={handleChange}
-                            />
-                            <TextField
-                                variant="outlined"
-                                margin="normal"
-                                fullWidth
-                                value={data.password}
-                                label="Password"
-                                type="password"
-                                InputProps={{
-                                    id: '1'
-                                }}
-                                autoComplete="current-password"
-                                onChange={handleChange}
-                                size="small"
-                            />
-                            <TextField
-                                variant="outlined"
-                                margin="normal"
-                                fullWidth
-                                type="password"
-                                InputProps={{
-                                    id: '4'
-                                }}
-                                label="Confirmation Password"
-                                value={data.confirmPassword}
-                                onChange={handleChange}
-                                autoComplete="email"
-                                size="small"
-                            />
-                            <Button type="submit" fullWidth variant="contained" color="primary" sx={{ color: 'white', fontWeight: 'bold', mt: 3 }}>
+                        <CssBaseline />
+                        <div>
+                            <Typography component="h1" variant="h5" sx={{ mt: 2, fontWeight: 'bold', display: 'flex', justifyContent: 'center' }}>
+                                <MoodIcon color="primary" />
                                 Sign In
-                            </Button>
-                        </FormControl>
-                    </div>
+                            </Typography>
+                            <FormControl onSubmit={handleSubmit}>
+                                <TextField
+                                    variant="outlined"
+                                    margin="normal"
+                                    fullWidth
+                                    InputProps={{
+                                        id: '3'
+                                    }}
+                                    label="Name"
+                                    size="small"
+                                    value={data.username}
+                                    onChange={handleChange}
+                                />
+                                <TextField
+                                    variant="outlined"
+                                    margin="normal"
+                                    fullWidth
+                                    InputProps={{
+                                        id: '2'
+                                    }}
+                                    label="Email Address"
+                                    name="email"
+                                    autoComplete="email"
+                                    size="small"
+                                    value={data.email}
+                                    onChange={handleChange}
+                                />
+                                <TextField
+                                    variant="outlined"
+                                    margin="normal"
+                                    fullWidth
+                                    value={data.password}
+                                    label="Password"
+                                    type="password"
+                                    InputProps={{
+                                        id: '1'
+                                    }}
+                                    autoComplete="current-password"
+                                    onChange={handleChange}
+                                    size="small"
+                                />
+                                <TextField
+                                    variant="outlined"
+                                    margin="normal"
+                                    fullWidth
+                                    type="password"
+                                    InputProps={{
+                                        id: '4'
+                                    }}
+                                    label="Confirmation Password"
+                                    value={data.confirmPassword}
+                                    onChange={handleChange}
+                                    autoComplete="email"
+                                    size="small"
+                                />
+                                <Button type="submit" fullWidth variant="contained" color="primary" sx={{ color: 'white', fontWeight: 'bold', mt: 3 }}>
+                                    Sign In
+                                </Button>
+                            </FormControl>
+                        </div>
 
-                </Box>
-            </Grid>
+                    </Box>
+                </Grid>
+            </div>
         </>
     );
 }
