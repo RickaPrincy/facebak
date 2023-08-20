@@ -5,20 +5,25 @@ import {
     DialogActions,
     DialogContent,
     DialogTitle,
+    IconButton,
     TextField,
 } from '@mui/material';
 import { FormControl } from '@mui/base';
+import { Close } from '@mui/icons-material';
 
 function PostField({ status, setStatus }) {
     return (
         <Dialog open={status} onClose={setStatus} >
-            <DialogTitle>
+            <DialogTitle sx={{display:'flex', justifyContent: 'space-between', alignItems:'center'}}>
                 <p className='text-center text-gray-700 font-bold md:text-[20px]'>Create a Post</p>
+                <IconButton onClick={setStatus}>
+                    <Close sx={{color:'rgba(255,255,255,.6)]'}}/>
+                </IconButton> 
             </DialogTitle>
             <DialogContent className='text-center' sx={{ fontWeight: 'bold' }}>
-                <FormControl className='md:min-w-[400px]'>
+                <FormControl className='md:min-w-[400px] mt-1'>
                     <TextField
-                        variant='filled'
+                        variant='outlined'
                         autoFocus={true}
                         required={true}
                         label='Your post title'
@@ -31,7 +36,7 @@ function PostField({ status, setStatus }) {
                         sx={{backgroundColor: 'white'}}
                     />
                     <TextField
-                        variant='filled'
+                        variant='outlined'
                         autoFocus={true}
                         required={true}
                         multiline

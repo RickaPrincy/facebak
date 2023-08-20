@@ -5,19 +5,10 @@ import InfoPost from './InfoPost';
 import PostOption from './PostOption';
 
 function Post({post}) {
-    const userConnected = '1';
-
-    const isUserLikedPage = () => {
-        return post.reactions.map(el => el.userId).indexOf(userConnected) !== -1;
-    };
-
-    const getColor = (color) => {
-        return isUserLikedPage() ? color : '#595959';
-    };
-
+    
     const postInformation = [
-        { value: post.reactions.length, icon: <ThumbUp fontSize='small' sx={{color:getColor('primary')}}/> },
-        { value: post.comments.length, icon: <Comment fontSize='small' sx={{color:getColor('warning')}}/> }
+        { value: post._count.reactions, icon: <ThumbUp fontSize='small' sx={{color: '#595959'}}/> },
+        { value: post._count.comments, icon: <Comment fontSize='small' sx={{color:'#595959'}}/> }
     ];
 
     return (
