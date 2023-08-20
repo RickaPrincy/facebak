@@ -13,8 +13,7 @@ export default function Login() {
                     display: 'flex',
                     flexDirection: 'row',
                     alignItems: 'center',
-                    background: 'rgb(236, 233, 233)',
-                    height: '100vh'
+                    background: 'rgb(243, 242, 242)',
                 }}
             >
                 <SideOne />
