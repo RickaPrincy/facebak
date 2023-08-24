@@ -1,28 +1,31 @@
 import React from 'react';
-import { 
+import {
     Route,
-    Routes 
+    Routes
 } from 'react-router-dom';
 
-import { 
-    Home, 
-    Login, 
+import {
+    Home,
+    Login,
     Profile
 } from './pages';
 
-import { NavMenu } from './components';
+import { MenuLeft, NavMenu, Recommended } from './components';
 
 function Router() {
     return (
         <>
-            <NavMenu/>
-            {/* <MenuLeft /> */}
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/profile" element={<Profile/>} />
-                <Route path="*" element={<h1>Page not found</h1>} />
-            </Routes>
+            <NavMenu />
+            <div className='h-[calc(100vh-64px)] flex items-start gap-4 overflow-hidden'>
+                <MenuLeft />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="*" element={<h1>Page not found</h1>} />
+                </Routes>
+                <Recommended/>
+            </div>
         </>
     );
 }

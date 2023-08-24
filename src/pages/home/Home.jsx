@@ -3,10 +3,10 @@ import { CreatePost, PostList } from './components';
 
 function Home() {
     return (
-        <>
+        <div className='overflow-y-scroll h-[calc(100vh-65px)] scroll-hidden'>
             <CreatePost />
             <PostList />
-        </>
+        </div>
     );
 }
 
