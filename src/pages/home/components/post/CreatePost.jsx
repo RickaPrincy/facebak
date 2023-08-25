@@ -12,7 +12,7 @@ function CreatePost() {
 
     return (
         <>
-            <div className="mx-auto mm:w-full md:w-[fit-content] md:min-w-[700px] cursor-pointer rounded-15 mt-5 shadow-md w-[fit-content] p-5 bg-white">
+            <div className="mx-auto w-full cursor-pointer rounded-15 mt-5 shadow-md p-5 bg-white">
                 <Box display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
                     <h2 className="text-blue-950 font-bold text-[16px]">Create Post</h2>
                     <IconButton onClick={toggleAddPost}>

@@ -4,7 +4,7 @@ import UserRList from './UserRList';
 
 function Recommended() {
     return (
-        <div>
+        <div className='w-[50%] lg:block mm:hidden me-2'>
             <UserRList />
             <PostRList />
         </div>

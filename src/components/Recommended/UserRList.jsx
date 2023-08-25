@@ -3,7 +3,7 @@ import React from 'react';
 
 function UserRList() {
     return (
-        <div className='text-[rgba(0,0,0,.7)] rounded-[15px] shadow-lg text-[13px] bg-white py-5 px-4 mt-5 me-2'>
+        <div className='text-[rgba(0,0,0,.7)] w-full rounded-[15px] shadow-lg text-[13px] bg-white py-5 px-4 mt-5 me-2'>
             <h2 className='text-[16px] font-bold'>Recommended Friends</h2>
             <p className='text-blue-500 hover:underline w-fit cursor-pointer mb-1'>View more</p>
             <hr className='bg-gray-300 mb-3'/>
