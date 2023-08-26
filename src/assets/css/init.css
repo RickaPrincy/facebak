@@ -32,12 +32,16 @@ body{
     } 
 }
 
+.scroll-hidden::-webkit-scrollbar{
+    width: 0;
+}
+
 body::-webkit-scrollbar {
     width: 5px;
 }
 
 body::-webkit-scrollbar-thumb {
-    @apply bg-[rgba(0,0,255,.8)]
+    @apply bg-[rgba(0,0,90,.8)]
 }
 
 body::-webkit-scrollbar-track {

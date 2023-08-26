@@ -12,7 +12,7 @@ function Post({post}) {
     ];
 
     return (
-        <div className='shadow-md p-5 w-[fit-content] md:min-w-[700px] max-w-[700px] bg-white mx-auto rounded-15 my-4'>
+        <div className='shadow-md p-5 w-full bg-white mx-auto rounded-15 my-4'>
             <Box display='flex' alignItems='flex-start' justifyContent='space-between' marginY={1}>
                 <div className='flex items-center'>
                     <img src='temp_user.jpg' alt='Some people photo' className='profil_img' />

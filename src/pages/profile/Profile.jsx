@@ -4,7 +4,7 @@ import PhotoRecentsProfil from './PhotoRecentsProfil';
 
 function Profile(){
     return (
-        <Container>
+        <Container className='overflow-y-scroll scroll-hidden'>
             <Grid container justifyContent="center" alignItems="center" sx={{ height: '90vh' }}>
                 <Card sx={{ width: '100%' }}>
                     <Box sx={{ backgroundColor: '#424242', height: 200, display: 'flex', alignItems: 'flex-start' }}>
