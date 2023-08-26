@@ -3,10 +3,21 @@ import { TextField, Grid, Button, Paper, Checkbox, Typography, Link } from '@mui
 import { Box } from '@mui/material';
 import { FormControlLabel } from '@mui/material';
 import VpnKeyOffIcon from '@mui/icons-material/VpnKeyOff';
+import { usePopup } from '../../hooks/usePopup';
+import Signup from './Signup';
 
-function SideTwo() {
+
+export default function SideTwo() {
+    const [popup, changePopup] = usePopup(false);
     return (
         <>
+            {popup && (
+                <div className="popup">
+                    <div className="popup-content">
+                        <Signup />
+                    </div>
+                </div>
+            )}
             <div className='md:min-w-[400px] sm-hidden mt-6'>
                 <Grid component={Paper} elevation={8}>
                     <Box sx={{
@@ -19,7 +30,7 @@ function SideTwo() {
                     }}>
                         <Typography component="h1" variant="h5" sx={{ mt: 2, fontWeight: 'bold' }}>
                             <VpnKeyOffIcon />
-                            Login
+                            Sign up
                         </Typography>
                         <TextField size='small' fullWidth variant='outlined' id='just-some-text-field' label='Your Name' sx={{ color: 'orange' }} />
                         <TextField size='small' type='password' fullWidth variant='outlined' id='just-some-password-field' label='Password' sx={{ color: 'orange' }} />
@@ -33,7 +44,7 @@ function SideTwo() {
                             variant="contained"
                             sx={{ mb: 2, color: 'white' }}
                         >
-                            Login
+                            Sign up
                         </Button>
                         <Link href="#" variant="body2">
                             Forgot password?
@@ -43,6 +54,7 @@ function SideTwo() {
                             variant="contained"
                             color='secondary'
                             sx={{ mb: 2, color: 'white' }}
+                            onClick={changePopup}
                         >
                             Sign in
                         </Button>
@@ -52,5 +64,3 @@ function SideTwo() {
         </>
     );
 }
-
-export default SideTwo;
