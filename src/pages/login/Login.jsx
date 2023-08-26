@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import SideOne from './SideOne';
-import Signup from './Signup';
+import SideTwo from './SideTwo';
 
 export default function Login() {
     return (
@@ -17,7 +17,7 @@ export default function Login() {
                 }}
             >
                 <SideOne />
-                <Signup />
+                <SideTwo />
             </Box>
         </>
     );
