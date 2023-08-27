@@ -1,24 +1,34 @@
 import React from 'react';
+import {
+    Route,
+    Routes
+} from 'react-router-dom';
+import Signin from './Signin';
+import Signup from './Signup';
 import { Box } from '@mui/material';
 import SideOne from './SideOne';
-import SideTwo from './SideTwo';
 
-export default function Login() {
+function Login() {
     return (
-        <>
-            <Box
-                sx={{
-                    gap: 15,
-                    p: 4,
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    background: 'rgb(243, 242, 242)',
-                }}
-            >
-                <SideOne />
-                <SideTwo />
-            </Box>
-        </>
+        <Box
+            sx={{
+                gap: 15,
+                p: 4,
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                minHeight: '100vh',
+                background: 'rgb(243, 242, 242)',
+            }}
+        >
+            <SideOne />
+            <Routes>
+                <Route path='connection' element={<Signin />} />
+                <Route path='registration' element={<Signup />} />
+                <Route path='*' element={<h1>Not Found</h1>} />
+            </Routes>
+        </Box>
     );
 }
+
+export default Login;

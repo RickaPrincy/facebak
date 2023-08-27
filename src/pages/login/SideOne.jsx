@@ -43,7 +43,7 @@ export default function SideOne() {
                                 </Typography>
                             </Box>
                         </Box>
-                        <Paper elevation={6} variant="outlined" square sx={{ p: 4 }}>
+                        <Paper variant="outlined" sx={{ p: 4 }}>
                             <Box
                                 sx={{
                                     display: 'flex',

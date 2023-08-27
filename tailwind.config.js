@@ -9,7 +9,7 @@ export default {
                 '1350': '1350px'
             },
             colors:{
-                'gra-blue': '#595959'
+                'gray-blue': '#595959'
             }
         }
     },

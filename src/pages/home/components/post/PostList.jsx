@@ -1,20 +1,12 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Post from './Post';
+import { useAxiosGet } from '../../../../hooks';
 
 function PostList() {
-    const [postList, setPostList] = useState([]);
-
-    const fetchPostList = () => {
-        axios.get('/posts')
-            .then(response => setPostList(response.data))
-            .catch(error => {
-                console.log(error);
-            });
-    };
+    const [postList, getPostList] = useAxiosGet('/posts');
 
     useEffect(() => {
-        fetchPostList();
+        getPostList();
     }, []);
 
     return (
