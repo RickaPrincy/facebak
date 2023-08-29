@@ -3,6 +3,8 @@ import { Box } from '@mui/material';
 import React from 'react';
 import InfoPost from './InfoPost';
 import PostOption from './PostOption';
+import CommentStyle from '../comment/CommentStyle';
+import CreateComments from '../comment/CreateComments';
 
 function Post({post}) {
     
@@ -33,6 +35,9 @@ function Post({post}) {
             <div className='flex mt-3 mx-0 p-0'>
                 {postInformation.map((info, index) => <InfoPost key={index} info={info} />)}
             </div>
+            <CommentStyle />
+            <hr />
+            <CreateComments/>
         </div>
     );
 }
