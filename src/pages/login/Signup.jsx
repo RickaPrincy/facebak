@@ -16,10 +16,10 @@ export function Signup() {
         password: '',
         confirmPassword: '',
     });
-
+    
     const handleSubmit = event => {
         event.preventDefault();
-        alert('I will send the data');
+        console.log(data);
     };
 
     const handleChange = event => {
@@ -45,7 +45,7 @@ export function Signup() {
                             <MoodIcon color='primary' />
                             <p className='font-bold text-[25px] text-gray-600'>Signup</p>
                         </div>
-                        <FormControl onSubmit={handleSubmit}>
+                        <FormControl component={'form'} className='w-[300px]' onSubmit={handleSubmit}>
                             <TextField
                                 variant='outlined'
                                 margin='normal'
@@ -56,12 +56,14 @@ export function Signup() {
                                 label='Name'
                                 name='username'
                                 size='small'
+                                required={true}
                                 value={data.username}
                                 onChange={handleChange}
                             />
                             <TextField
                                 variant='outlined'
                                 margin='normal'
+                                required={true}
                                 fullWidth
                                 InputProps={{
                                     id: '2'
@@ -70,6 +72,7 @@ export function Signup() {
                                 name='email'
                                 autoComplete='email'
                                 size='small'
+                                type='email'
                                 value={data.email}
                                 onChange={handleChange}
                             />
@@ -77,6 +80,7 @@ export function Signup() {
                                 variant='outlined'
                                 margin='normal'
                                 fullWidth
+                                required={true}
                                 name='password'
                                 value={data.password}
                                 label='Password'
@@ -91,6 +95,7 @@ export function Signup() {
                             <TextField
                                 variant='outlined'
                                 margin='normal'
+                                required={true}
                                 fullWidth
                                 type='password'
                                 InputProps={{
@@ -103,6 +108,7 @@ export function Signup() {
                                 autoComplete='email'
                                 size='small'
                             />
+                            {/* {(error && error.response) && <p className='text-red-500 text-[15px]'>{error.response.data.message}</p>} */}
                             <Button type='submit' variant='contained' color='primary' sx={{ color: 'white', fontWeight: 'bold', mt: 3 }}>
                                 Signup
                             </Button>

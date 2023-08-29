@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+    Navigate,
     Route,
     Routes
 } from 'react-router-dom';
@@ -25,7 +26,7 @@ function Login() {
             <Routes>
                 <Route path='connection' element={<Signin />} />
                 <Route path='registration' element={<Signup />} />
-                <Route path='*' element={<h1>Not Found</h1>} />
+                <Route path='*' element={<Navigate to={'/login/connection'}/>} />
             </Routes>
         </Box>
     );

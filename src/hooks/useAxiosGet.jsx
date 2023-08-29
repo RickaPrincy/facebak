@@ -3,21 +3,19 @@ import { useState } from 'react';
 import {
     BASE_API_URL,
     HEADERS
-} from '../api/api.config';
+} from '../api';
 import Cookies from 'js-cookie';
 
-export function useAxiosGet(url, defaultValue = [], tokenName = 'token') {
+export function useAxiosGet(url,tokenName = 'token', defaultValue = []) {
     const [data, setData] = useState(defaultValue);
     const [pending, setPending] = useState(true);
     const [error, setError] = useState(null);
-
-    console.log(Cookies.get(tokenName), tokenName);
-
+    
     const begin = () => {
         axios.get(`${BASE_API_URL}${url}`, {
             headers: {
                 ...HEADERS,
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ0NjhjYjcyLTcwYWQtNDY1NC1iZWU2LTk2ODQ1NTM0OTIyZSIsImVtYWlsIjoicmNrcHJpbmN5QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoicmlja2EiLCJqb2luZWRBdCI6IjIwMjMtMDgtMjdUMTg6MTM6MjUuMDUzWiIsImJpbyI6bnVsbCwicGhvdG8iOm51bGwsImlhdCI6MTY5MzE2MDAzOH0.SWG6evfLelpG3VxsfiiaxDz1jOnJtyGXmE5sYdhuCJ4'
+                Authorization: `Bearer ${Cookies.get(tokenName) || ''}`
             }
         })
             .then(response => {

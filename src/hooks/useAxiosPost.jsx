@@ -3,31 +3,33 @@ import { useState } from 'react';
 import {
     BASE_API_URL,
     HEADERS
-} from '../api/api.config';
+} from '../api';
 import Cookies from 'js-cookie';
 
-export function useAxiosPost(url, data, defaultValue = [], tokenName = 'token'){
+export function useAxiosPost(tokenName = 'token', defaultValue = null) {
     const [data, setData] = useState(defaultValue);
-    const [pending, setPending] = useState(true);
+    const [pending, setPending] = useState(false);
     const [error, setError] = useState(null);
 
-    console.log(Cookies,tokenName);
-    const begin = () =>{
-        axios.post(`${BASE_API_URL}${url}`,data,{
+    const begin = (url, body) => {
+        setPending(true);
+        setError(null);
+        setData(null);
+
+        axios.post(`${BASE_API_URL}${url}`, body, {
             headers: {
                 ...HEADERS,
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ0NjhjYjcyLTcwYWQtNDY1NC1iZWU2LTk2ODQ1NTM0OTIyZSIsImVtYWlsIjoicmNrcHJpbmN5QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoicmlja2EiLCJqb2luZWRBdCI6IjIwMjMtMDgtMjdUMTg6MTM6MjUuMDUzWiIsImJpbyI6bnVsbCwicGhvdG8iOm51bGwsImlhdCI6MTY5MzE2MDAzOH0.SWG6evfLelpG3VxsfiiaxDz1jOnJtyGXmE5sYdhuCJ4'
+                Authorization: `Bearer ${Cookies.get(tokenName) || ''}`
             }
-        }).then(response => {
-            setError(false);
-            setData(response.data);
         })
+            .then(response => {
+                setData(response.data);
+            })
             .catch(error => {
-                setError(true);
-                console.log(error);
+                setError(error);
             })
             .finally(() => setPending(false));
     };
 
-    return [data,begin,pending, error];
+    return [data, begin, pending, error];
 }
