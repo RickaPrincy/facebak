@@ -7,7 +7,7 @@ function PublicRoute({ children }) {
 
     return (
         <>
-            {connection.isConnected() ? <Navigate to={'/'} /> : children}
+            {connection.isConnected() ? <Navigate to={'/home'} /> : children}
         </>
     );
 }

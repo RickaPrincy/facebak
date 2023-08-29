@@ -1,31 +1,28 @@
 import React from 'react';
 import {
+    Navigate,
     Route,
     Routes
 } from 'react-router-dom';
 
 import {
-    Home,
-    Login,
-    Profile
+    Login
 } from './pages';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import NavMenu from './components/navbar/NavMenu';
+import Connected from './pages/Connected';
+import NotFound from './pages/NotFound';
 
 function Router() {
     return (
         <>
             <NavMenu/>
             <Routes>
-                <Route path='/' element={
+                <Route path='/' element={<Navigate to={'/home'}/>}/>
+                <Route index path='/home/*' element={
                     <PrivateRoute>
-                        <Home />
-                    </PrivateRoute>
-                } />
-                <Route path='/profile' element={
-                    <PrivateRoute>
-                        <Profile />
+                        <Connected />
                     </PrivateRoute>
                 } />
                 <Route path='/login/*' element={
@@ -33,7 +30,7 @@ function Router() {
                         <Login />
                     </PublicRoute>
                 } />
-                <Route path='*' element={<h1 className='text-[20px] fontt-bold'>Page not found</h1>} />
+                <Route path='*' element={<NotFound/>} />
             </Routes>
         </>
     );

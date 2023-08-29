@@ -20,7 +20,7 @@ import { Link } from 'react-router-dom';
 
 function MenuLeft() {
     return (
-        <List className='h-full bg-white w-[250px] md:block mm:hidden'>
+        <List className='bg-white min-w-[250px] h-[calc(100vh - 65px)] md:block mm:hidden'>
             <ListItemButton component={Link} to='/profile'>
                 <ListItemIcon>
                     <AccountCircle />

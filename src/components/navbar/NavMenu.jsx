@@ -26,7 +26,7 @@ function NavMenu() {
     const menuLinks = [
         {
             value: 0,
-            to: '/',
+            to: '/home',
             icon: <Home className='md:text-[rgba(255,255,255,.8)]' />,
             text: 'Home'
         },
@@ -82,7 +82,7 @@ function NavMenu() {
                             <h1 className={'text-[rgba(255,255,255,.9)] text-[17px] mm:hidden md:block'}>
                                 {connection.user.username}
                             </h1>
-                            <Link to={'/profile'}>
+                            <Link to={'/home/profile'}>
                                 <img
                                     src='temp_user.jpg'
                                     alt='Your Profile'
