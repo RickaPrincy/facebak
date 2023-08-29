@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
     Box,
     Button,
@@ -7,27 +7,34 @@ import {
     FormControl
 } from '@mui/material';
 import MoodIcon from '@mui/icons-material/Mood';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from '../../hooks';
+import Error from '../../components/Error';
+import { axiosPost, login } from '../../api';
+import { ConnectionContext } from '../../context/auth';
 
 export function Signup() {
-    const [data, setData] = useState({
+    const connection = useContext(ConnectionContext);
+    const navigate = useNavigate();
+    const [data, handlerChange] = useForm({
         username: '',
         email: '',
         password: '',
         confirmPassword: '',
     });
-    
-    const handleSubmit = event => {
-        event.preventDefault();
-        console.log(data);
-    };
+    const [error, setError] = useState(null);
 
-    const handleChange = event => {
-        const { name, value } = event.target;
-        setData(prevData => ({
-            ...prevData,
-            [name]: value,
-        }));
+    const handlerSubmit = event => {
+        event.preventDefault();
+        axiosPost('/users', data).then(() => {
+            axiosPost('/users/login', { ...data }).then(res => {
+                const info = login(res);
+                connection.login(info.user, info.token);
+                navigate('/');
+            })
+                .catch(err => setError(err));
+        })
+            .catch(error => setError(error));
     };
 
     return (
@@ -45,7 +52,7 @@ export function Signup() {
                             <MoodIcon color='primary' />
                             <p className='font-bold text-[25px] text-gray-600'>Signup</p>
                         </div>
-                        <FormControl component={'form'} className='w-[300px]' onSubmit={handleSubmit}>
+                        <FormControl component={'form'} className='w-[300px]' onSubmit={handlerSubmit}>
                             <TextField
                                 variant='outlined'
                                 margin='normal'
@@ -58,7 +65,7 @@ export function Signup() {
                                 size='small'
                                 required={true}
                                 value={data.username}
-                                onChange={handleChange}
+                                onChange={handlerChange}
                             />
                             <TextField
                                 variant='outlined'
@@ -74,7 +81,7 @@ export function Signup() {
                                 size='small'
                                 type='email'
                                 value={data.email}
-                                onChange={handleChange}
+                                onChange={handlerChange}
                             />
                             <TextField
                                 variant='outlined'
@@ -89,7 +96,7 @@ export function Signup() {
                                     id: '1'
                                 }}
                                 autoComplete='current-password'
-                                onChange={handleChange}
+                                onChange={handlerChange}
                                 size='small'
                             />
                             <TextField
@@ -104,11 +111,10 @@ export function Signup() {
                                 name='confirmPassword'
                                 label='Confirmation Password'
                                 value={data.confirmPassword}
-                                onChange={handleChange}
+                                onChange={handlerChange}
                                 autoComplete='email'
                                 size='small'
                             />
-                            {/* {(error && error.response) && <p className='text-red-500 text-[15px]'>{error.response.data.message}</p>} */}
                             <Button type='submit' variant='contained' color='primary' sx={{ color: 'white', fontWeight: 'bold', mt: 3 }}>
                                 Signup
                             </Button>
@@ -119,6 +125,7 @@ export function Signup() {
                     </div>
                 </Box>
             </div>
+            <Error error={error} onClose={() => setError(null)} />
         </>
     );
 }

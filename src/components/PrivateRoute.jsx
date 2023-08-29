@@ -7,7 +7,7 @@ function PrivateRoute({children}) {
 
     return (
         <>
-            {!connection.isConnected() ? <Navigate to={'login/connection'}/> : children}
+            {!connection.isConnected() ? <Navigate to={'/login/connection'}/> : children}
         </>
     );
 }

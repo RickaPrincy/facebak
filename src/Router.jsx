@@ -11,10 +11,12 @@ import {
 } from './pages';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+import NavMenu from './components/navbar/NavMenu';
 
 function Router() {
     return (
         <>
+            <NavMenu/>
             <Routes>
                 <Route path='/' element={
                     <PrivateRoute>

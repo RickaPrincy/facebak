@@ -12,14 +12,13 @@ function getDefaultValue() {
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(getDefaultValue());
 
+    const isConnected = () => user !== null;
+
     const login = (newUser, token) => {
         setUser({ ...user, ...newUser });
         Cookies.set('user', JSON.stringify({ ...user, ...newUser }));
         Cookies.set('token', token);
     };
-
-    const isConnected = () => user !== null;
-
     const logout = () => {
         document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC';
         document.cookie = 'user=; expires=Thu, 01 Jan 1970 00:00:00 UTC';

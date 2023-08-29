@@ -1,5 +1,5 @@
-export function login(data) {
-    const token = data.token;
-    delete data.token;
-    return {token,user: {...data}};
+export function login(response) {
+    const token = response.data.token;
+    delete response.data.token;
+    return {token,user: {...response.data}};
 }
