@@ -5,12 +5,11 @@ import InfoPost from './InfoPost';
 import PostOption from './PostOption';
 import CommentStyle from '../comment/CommentStyle';
 import CreateComments from '../comment/CreateComments';
+function Post({ post }) {
 
-function Post({post}) {
-    
     const postInformation = [
-        { value: post._count.reactions, icon: <ThumbUp fontSize='small' sx={{color: '#595959'}}/> },
-        { value: post._count.comments, icon: <Comment fontSize='small' sx={{color:'#595959'}}/> }
+        { value: post._count.reactions, icon: <ThumbUp fontSize='small' sx={{ color: '#595959' }} /> },
+        { value: post._count.comments, icon: <Comment fontSize='small' sx={{ color: '#595959' }} /> }
     ];
 
     return (
@@ -31,7 +30,7 @@ function Post({post}) {
             </Box>
             <h2 className='font-bold text-gray-700 my-1 text-[15px]'>{post.title}</h2>
             <p className='text-gray-600 text-[15px]'> {post.content} </p>
-            <hr className='bg-gray-300 my-3 h-[2px]'/>
+            <hr className='bg-gray-300 my-3 h-[2px]' />
             <div className='flex mt-3 mx-0 p-0'>
                 {postInformation.map((info, index) => <InfoPost key={index} info={info} />)}
             </div>
