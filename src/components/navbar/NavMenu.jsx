@@ -84,7 +84,7 @@ function NavMenu() {
                             </h1>
                             <Link to={'/home/profile'}>
                                 <img
-                                    src='temp_user.jpg'
+                                    src='/temp_user.jpg'
                                     alt='Your Profile'
                                     className='w-[50px] rounded-[50%] border-[0.5px] border-[rgba(255,255,255,.7)] h-[50px] cursor-pointer'
                                 />

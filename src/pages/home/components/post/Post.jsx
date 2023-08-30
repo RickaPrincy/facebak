@@ -57,8 +57,8 @@ function Post({ post, refresh }) {
                 {isMine() && <PostOption refresh={refresh} post={post} />}
             </Box>
             <h2 className='font-bold text-gray-700 my-1 text-[15px]'>{post.title}</h2>
-            <p className='text-gray-600 text-[15px]'> {post.content} </p>
-            <hr className='bg-gray-300 my-3 h-[2px]' />
+            <p className='text-gray-600 w-[fit-content] text-[15px]'>{post.content}</p>
+            <hr className='bg-gray-300 my-3 h-[2px]'/>
             <div className='flex mt-3 mx-0 mb-2 gap-2 p-0'>
                 <InfoPost
                     key={uuid()}
