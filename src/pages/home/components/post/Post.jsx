@@ -66,7 +66,7 @@ function Post({post}){
                 />
             </div>
             <hr />
-            <CreateComments/>
+            <CreateComments refresh={getComments} postId={post.id}/>
         </div>
     );
 }

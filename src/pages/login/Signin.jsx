@@ -40,7 +40,7 @@ export function Signin() {
 
     return (
         <>
-            <div className='md:min-w-[400px] sm-hidden mt-6'>
+            <div className='md:min-w-[400px] mx-auto sm-hidden mt-6'>
                 <Grid component={Paper} elevation={8}>
                     <Box sx={{
                         py: 3,
