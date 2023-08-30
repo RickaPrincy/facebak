@@ -1,17 +1,27 @@
-import { Public, ThumbUp, Comment } from '@mui/icons-material';
+import { Public, ThumbUp, Comment, ThumbDown } from '@mui/icons-material';
 import { Box } from '@mui/material';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import InfoPost from './InfoPost';
 import PostOption from './PostOption';
-import CommentStyle from '../comment/CommentStyle';
 import CreateComments from '../comment/CreateComments';
+import { useAxiosGet } from '../../../../hooks';
+import { v4 as uuid} from 'uuid';
+import { ConnectionContext } from '../../../../context/auth';
 
-function Post({post}) {
+function Post({post}){
+    const connection = useContext(ConnectionContext);
+    const [comments,getComments] = useAxiosGet(`/posts/${post.id}/comments`) ;
+    const [reactions,getReactions] = useAxiosGet(`/posts/${post.id}/reactions`) ;
+    // const [showComments,setShowComments] = usePopup();
     
-    const postInformation = [
-        { value: post._count.reactions, icon: <ThumbUp fontSize='small' sx={{color: '#595959'}}/> },
-        { value: post._count.comments, icon: <Comment fontSize='small' sx={{color:'#595959'}}/> }
-    ];
+    useEffect(()=>{
+        getComments();
+        getReactions();
+    },[]);
+
+    const isLiked = (type)=>{
+        return reactions.find(el => el.type === type && el.user.id === connection.me());
+    };
 
     return (
         <div className='shadow-md p-5 w-full bg-white mx-auto rounded-15 my-4'>
@@ -32,10 +42,29 @@ function Post({post}) {
             <h2 className='font-bold text-gray-700 my-1 text-[15px]'>{post.title}</h2>
             <p className='text-gray-600 text-[15px]'> {post.content} </p>
             <hr className='bg-gray-300 my-3 h-[2px]'/>
-            <div className='flex mt-3 mx-0 p-0'>
-                {postInformation.map((info, index) => <InfoPost key={index} info={info} />)}
+            <div className='flex mt-3 mx-0 mb-2 gap-2 p-0'>
+                <InfoPost 
+                    key={uuid()} 
+                    info={{
+                        value: [...reactions].filter(el => el.type === 'LIKE').length + ' likes',
+                        icon: <ThumbUp sx={{color: isLiked('LIKE') ? '#2261e0' : 'rgba(0,0,0,.7)'}}/>
+                    }} 
+                />
+                <InfoPost 
+                    key={uuid()} 
+                    info={{
+                        value: [...reactions].filter(el => el.type === 'DISLIKE').length + ' dislikes',
+                        icon: <ThumbDown sx={{color: isLiked('DISLIKE') ? '#ed4532' : 'rgba(0,0,0,.7)'}}/>
+                    }} 
+                />
+                <InfoPost 
+                    key={uuid()} 
+                    info={{
+                        value: comments.length + ' comments',
+                        icon: <Comment sx={{color: 'rgba(0,0,0,.7)'}}/>
+                    }} 
+                />
             </div>
-            <CommentStyle />
             <hr />
             <CreateComments/>
         </div>
