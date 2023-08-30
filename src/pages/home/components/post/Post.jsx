@@ -22,7 +22,11 @@ function Post({ post, refresh }) {
         getComments();
         getReactions();
     }, []);
-
+    
+    const isMine = ()=>{
+        return post.user.id === connection.me();
+    };
+    
     const isLiked = (type) => {
         return reactions.find(el => el.type === type && el.user.id === connection.me());
     };
@@ -50,7 +54,7 @@ function Post({ post, refresh }) {
                         </p>
                     </div>
                 </div>
-                <PostOption refresh={refresh} post={post} />
+                {isMine() && <PostOption refresh={refresh} post={post} />}
             </Box>
             <h2 className='font-bold text-gray-700 my-1 text-[15px]'>{post.title}</h2>
             <p className='text-gray-600 text-[15px]'> {post.content} </p>
