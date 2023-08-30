@@ -38,5 +38,4 @@ function ProfileMenu() {
         </BottomNavigation>
     );
 }
-
 export default ProfileMenu;

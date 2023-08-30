@@ -1,14 +1,26 @@
 import { Box, Button, IconButton } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import { usePopup } from '../../../../hooks';
 import PostField from './PostField';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import EditIcon from '@mui/icons-material/Edit';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import SentimentVerySatisfiedOutlinedIcon from '@mui/icons-material/SentimentVerySatisfiedOutlined';
+import Error from '../../../../components/Error';
+import { axiosPut } from '../../../../api';
 
-function CreatePost() {
+function CreatePost({ onAdd }) {
     const [addPostStatus, toggleAddPost] = usePopup();
+    const [error, setError] = useState(null);
+
+    const handlerSubmit = (values) => {
+        axiosPut('/posts', values)
+            .then(() => {
+                onAdd();
+                toggleAddPost(!addPostStatus);
+            })
+            .catch(err => setError(err));
+    };
 
     return (
         <>
@@ -41,7 +53,13 @@ function CreatePost() {
                     </div>
                 </Box>
             </div >
-            <PostField status={addPostStatus} setStatus={toggleAddPost} />
+            <PostField 
+                text='Create' 
+                status={addPostStatus} 
+                onSubmit={handlerSubmit} 
+                setStatus={toggleAddPost} 
+            />
+            <Error error={error} onClose={() => setError(null)} />
         </>
     );
 }

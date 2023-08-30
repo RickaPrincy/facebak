@@ -29,6 +29,7 @@ export function Signup() {
         axiosPost('/users', data).then(() => {
             axiosPost('/users/login', { ...data }).then(res => {
                 const info = login(res);
+                console.log(info);
                 connection.login(info.user, info.token);
                 navigate('/');
             })
