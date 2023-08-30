@@ -6,7 +6,6 @@ import CreatePost from './CreatePost';
 
 function PostList() {
     const [postList, getPostList, pending] = useAxiosGet('/posts');
-
     const handlerAddPost = ()=>{
         getPostList();
     };
@@ -18,7 +17,7 @@ function PostList() {
     return (
         <>
             <CreatePost onAdd={handlerAddPost}/>
-            {[...postList].reverse().map(post => <Post key={post.id} post={post}/>)} 
+            {[...postList].reverse().map(post => <Post refresh={getPostList} key={post.id} post={post}/>)} 
             {pending && <Loading />}
         </>    
     );

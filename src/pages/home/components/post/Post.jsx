@@ -9,7 +9,7 @@ import { v4 as uuid} from 'uuid';
 import { ConnectionContext } from '../../../../context/auth';
 import Comments from '../comment/Comments';
 
-function Post({post}){
+function Post({post,refresh}){
     const connection = useContext(ConnectionContext);
     const [comments,getComments] = useAxiosGet(`/posts/${post.id}/comments`) ;
     const [reactions,getReactions] = useAxiosGet(`/posts/${post.id}/reactions`) ;
@@ -38,7 +38,7 @@ function Post({post}){
                         </p>
                     </div>
                 </div>
-                <PostOption />
+                <PostOption refresh={refresh} post={post}/>
             </Box>
             <h2 className='font-bold text-gray-700 my-1 text-[15px]'>{post.title}</h2>
             <p className='text-gray-600 text-[15px]'> {post.content} </p>

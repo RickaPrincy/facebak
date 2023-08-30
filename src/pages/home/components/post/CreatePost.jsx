@@ -53,7 +53,12 @@ function CreatePost({ onAdd }) {
                     </div>
                 </Box>
             </div >
-            <PostField status={addPostStatus} onSubmit={handlerSubmit} setStatus={toggleAddPost} />
+            <PostField 
+                text='Create' 
+                status={addPostStatus} 
+                onSubmit={handlerSubmit} 
+                setStatus={toggleAddPost} 
+            />
             <Error error={error} onClose={() => setError(null)} />
         </>
     );

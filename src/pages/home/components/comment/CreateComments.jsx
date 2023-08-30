@@ -20,7 +20,6 @@ export default function CreateComments({ postId, refresh }) {
         })
             .then(() => {
                 refresh();
-                setNewComments('');
                 setSuccess(true);
             })
             .catch(err => setError(err));

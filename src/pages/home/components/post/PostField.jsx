@@ -13,10 +13,10 @@ import { Close } from '@mui/icons-material';
 import { ConnectionContext } from '../../../../context/auth';
 import { useForm } from '../../../../hooks';
 
-function PostField({ status, setStatus, onSubmit}) {
+function PostField({ status, setStatus,text, onSubmit, initials}) {
     const connection = useContext(ConnectionContext);
 
-    const [newPost,setNewPost] = useForm({
+    const [newPost,setNewPost] = useForm(initials || {
         title: '',
         content: '',
         userId: connection.me()        
@@ -30,7 +30,7 @@ function PostField({ status, setStatus, onSubmit}) {
     return (
         <Dialog open={status} onClose={setStatus} >
             <DialogTitle sx={{display:'flex', justifyContent: 'space-between', alignItems:'center'}}>
-                <p className='text-center text-gray-700 font-bold md:text-[20px]'>Create a Post</p>
+                <p className='text-center text-gray-700 font-bold md:text-[20px]'>{text + ' Post'}</p>
                 <IconButton onClick={setStatus}>
                     <Close sx={{color:'rgba(255,255,255,.6)]'}}/>
                 </IconButton> 
@@ -40,6 +40,7 @@ function PostField({ status, setStatus, onSubmit}) {
                     <TextField
                         variant='outlined'
                         autoFocus={true}
+                        defaultValue={newPost.title}
                         required={true}
                         onChange={setNewPost}
                         label='Your post title'
@@ -56,6 +57,7 @@ function PostField({ status, setStatus, onSubmit}) {
                         variant='outlined'
                         autoFocus={true}
                         required={true}
+                        defaultValue={newPost.content}
                         multiline
                         name='content'
                         onChange={setNewPost}
@@ -76,7 +78,7 @@ function PostField({ status, setStatus, onSubmit}) {
                     Cancel
                 </Button>
                 <Button autoFocus onClick={handlerSubmit} size='small' variant='contained' color='primary'>
-                    Create
+                    {text}
                 </Button>
             </DialogActions>
         </Dialog>
