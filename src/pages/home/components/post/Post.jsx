@@ -1,27 +1,39 @@
 import { Public, ThumbUp, Comment, ThumbDown } from '@mui/icons-material';
 import { Box } from '@mui/material';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import InfoPost from './InfoPost';
 import PostOption from './PostOption';
 import CreateComments from '../comment/CreateComments';
 import { useAxiosGet, usePopup } from '../../../../hooks';
-import { v4 as uuid} from 'uuid';
+import { v4 as uuid } from 'uuid';
 import { ConnectionContext } from '../../../../context/auth';
 import Comments from '../comment/Comments';
+import { axiosPost } from '../../../../api';
+import Error from '../../../../components/Error';
 
-function Post({post,refresh}){
+function Post({ post, refresh }) {
     const connection = useContext(ConnectionContext);
-    const [comments,getComments] = useAxiosGet(`/posts/${post.id}/comments`) ;
-    const [reactions,getReactions] = useAxiosGet(`/posts/${post.id}/reactions`) ;
-    const [showComments,setShowComments] = usePopup();
-    
-    useEffect(()=>{
+    const [comments, getComments] = useAxiosGet(`/posts/${post.id}/comments`);
+    const [reactions, getReactions] = useAxiosGet(`/posts/${post.id}/reactions`);
+    const [showComments, setShowComments] = usePopup();
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
         getComments();
         getReactions();
-    },[]);
+    }, []);
 
-    const isLiked = (type)=>{
+    const isLiked = (type) => {
         return reactions.find(el => el.type === type && el.user.id === connection.me());
+    };
+
+    const makeReactions = (type) => {
+        axiosPost(`/posts/${post.id}/reactions`, {
+            type,
+            userId: connection.me()
+        })
+            .then(() => getReactions())
+            .catch(err => setError(err));
     };
 
     return (
@@ -38,38 +50,41 @@ function Post({post,refresh}){
                         </p>
                     </div>
                 </div>
-                <PostOption refresh={refresh} post={post}/>
+                <PostOption refresh={refresh} post={post} />
             </Box>
             <h2 className='font-bold text-gray-700 my-1 text-[15px]'>{post.title}</h2>
             <p className='text-gray-600 text-[15px]'> {post.content} </p>
-            <hr className='bg-gray-300 my-3 h-[2px]'/>
+            <hr className='bg-gray-300 my-3 h-[2px]' />
             <div className='flex mt-3 mx-0 mb-2 gap-2 p-0'>
-                <InfoPost 
-                    key={uuid()} 
+                <InfoPost
+                    key={uuid()}
+                    onClick={()=>makeReactions('LIKE')}
                     info={{
                         value: [...reactions].filter(el => el.type === 'LIKE').length + ' likes',
-                        icon: <ThumbUp sx={{color: isLiked('LIKE') ? '#2261e0' : 'rgba(0,0,0,.7)'}}/>
-                    }} 
+                        icon: <ThumbUp sx={{ color: isLiked('LIKE') ? '#2261e0' : 'rgba(0,0,0,.7)' }} />
+                    }}
                 />
-                <InfoPost 
-                    key={uuid()} 
+                <InfoPost
+                    onClick={()=>makeReactions('DISLIKE')}
+                    key={uuid()}
                     info={{
                         value: [...reactions].filter(el => el.type === 'DISLIKE').length + ' dislikes',
-                        icon: <ThumbDown sx={{color: isLiked('DISLIKE') ? '#ed4532' : 'rgba(0,0,0,.7)'}}/>
-                    }} 
+                        icon: <ThumbDown sx={{ color: isLiked('DISLIKE') ? '#ed4532' : 'rgba(0,0,0,.7)' }} />
+                    }}
                 />
-                <InfoPost 
-                    key={uuid()} 
+                <InfoPost
+                    key={uuid()}
                     onClick={setShowComments}
                     info={{
                         value: comments.length + ' comments',
-                        icon: <Comment sx={{color: 'rgba(0,0,0,.7)'}}/>
-                    }} 
+                        icon: <Comment sx={{ color: 'rgba(0,0,0,.7)' }} />
+                    }}
                 />
             </div>
             <hr />
-            <Comments comments={comments} onClose={setShowComments} open={showComments}/>
-            <CreateComments refresh={getComments} postId={post.id}/>
+            <Comments comments={comments} onClose={setShowComments} open={showComments} />
+            <CreateComments refresh={getComments} postId={post.id} />
+            <Error error={error} onClose={()=>setError(null)}/>
         </div>
     );
 }
