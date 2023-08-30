@@ -4,15 +4,16 @@ import React, { useContext, useEffect } from 'react';
 import InfoPost from './InfoPost';
 import PostOption from './PostOption';
 import CreateComments from '../comment/CreateComments';
-import { useAxiosGet } from '../../../../hooks';
+import { useAxiosGet, usePopup } from '../../../../hooks';
 import { v4 as uuid} from 'uuid';
 import { ConnectionContext } from '../../../../context/auth';
+import Comments from '../comment/Comments';
 
 function Post({post}){
     const connection = useContext(ConnectionContext);
     const [comments,getComments] = useAxiosGet(`/posts/${post.id}/comments`) ;
     const [reactions,getReactions] = useAxiosGet(`/posts/${post.id}/reactions`) ;
-    // const [showComments,setShowComments] = usePopup();
+    const [showComments,setShowComments] = usePopup();
     
     useEffect(()=>{
         getComments();
@@ -59,6 +60,7 @@ function Post({post}){
                 />
                 <InfoPost 
                     key={uuid()} 
+                    onClick={setShowComments}
                     info={{
                         value: comments.length + ' comments',
                         icon: <Comment sx={{color: 'rgba(0,0,0,.7)'}}/>
@@ -66,6 +68,7 @@ function Post({post}){
                 />
             </div>
             <hr />
+            <Comments comments={comments} onClose={setShowComments} open={showComments}/>
             <CreateComments refresh={getComments} postId={post.id}/>
         </div>
     );

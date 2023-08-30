@@ -1,8 +1,8 @@
 import React from 'react';
 
-function InfoPost({ info }) {
+function InfoPost({ info, onClick = ()=>{} }) {
     return (
-        <div className='flex items-start text-[15px] gap-1 mr-5 cursor-pointer'>
+        <div onClick={onClick} className='flex items-start text-[15px] gap-1 mr-5 cursor-pointer'>
             {info.icon} 
             <p className='text-gray-700'>{info.value}</p>     
         </div> 
