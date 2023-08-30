@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
     List,
     ListItemIcon,
@@ -17,8 +17,11 @@ import {
 } from '@mui/icons-material';
 
 import { Link } from 'react-router-dom';
+import { ConnectionContext } from '../../context/auth';
 
 function MenuLeft() {
+    const connection = useContext(ConnectionContext);
+
     return (
         <List className='bg-white min-w-[250px] h-[calc(100vh - 65px)] md:block mm:hidden'>
             <ListItemButton component={Link} to='/profile'>
@@ -57,7 +60,7 @@ function MenuLeft() {
                 </ListItemIcon>
                 <ListItemText primary='Messagerie' />
             </ListItemButton>
-            <ListItemButton>
+            <ListItemButton onClick={connection.logout}>
                 <ListItemIcon>
                     <ExitToApp />
                 </ListItemIcon>

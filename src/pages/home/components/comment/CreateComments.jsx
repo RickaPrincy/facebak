@@ -38,6 +38,7 @@ export default function CreateComments({ postId, refresh }) {
                         size='small'
                         variant='outlined'
                         fullWidth={true}
+                        required={true}
                         id='just-some-text-field'
                         onChange={(event) => setNewComments(event.target.value)}
                         label='Comment'
