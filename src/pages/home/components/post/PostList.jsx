@@ -2,9 +2,14 @@ import React, { useEffect } from 'react';
 import Post from './Post';
 import { useAxiosGet } from '../../../../hooks';
 import { Loading } from '../../../../components';
+import CreatePost from './CreatePost';
 
 function PostList() {
     const [postList, getPostList, pending] = useAxiosGet('/posts');
+
+    const handlerAddPost = ()=>{
+        getPostList();
+    };
 
     useEffect(() => {
         getPostList();
@@ -12,7 +17,8 @@ function PostList() {
 
     return (
         <>
-            {postList.map(post => <Post key={post.id} post={post}/>)} 
+            <CreatePost onAdd={handlerAddPost}/>
+            {[...postList].reverse().map(post => <Post key={post.id} post={post}/>)} 
             {pending && <Loading />}
         </>    
     );

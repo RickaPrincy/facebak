@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
     Button,
     Dialog,
@@ -10,8 +10,23 @@ import {
 } from '@mui/material';
 import { FormControl } from '@mui/base';
 import { Close } from '@mui/icons-material';
+import { ConnectionContext } from '../../../../context/auth';
+import { useForm } from '../../../../hooks';
 
-function PostField({ status, setStatus }) {
+function PostField({ status, setStatus, onSubmit}) {
+    const connection = useContext(ConnectionContext);
+
+    const [newPost,setNewPost] = useForm({
+        title: '',
+        content: '',
+        userId: connection.me()        
+    });
+
+    const handlerSubmit = (event) =>{
+        event.preventDefault();
+        onSubmit(newPost);
+    };
+
     return (
         <Dialog open={status} onClose={setStatus} >
             <DialogTitle sx={{display:'flex', justifyContent: 'space-between', alignItems:'center'}}>
@@ -21,13 +36,15 @@ function PostField({ status, setStatus }) {
                 </IconButton> 
             </DialogTitle>
             <DialogContent className='text-center' sx={{ fontWeight: 'bold' }}>
-                <FormControl className='md:min-w-[400px] mt-1'>
+                <FormControl onSubmit={handlerSubmit} className='md:min-w-[400px] mt-1'>
                     <TextField
                         variant='outlined'
                         autoFocus={true}
                         required={true}
+                        onChange={setNewPost}
                         label='Your post title'
                         type='text'
+                        name='title'
                         size='small'
                         className='w-full'
                         InputProps={{
@@ -40,6 +57,8 @@ function PostField({ status, setStatus }) {
                         autoFocus={true}
                         required={true}
                         multiline
+                        name='content'
+                        onChange={setNewPost}
                         InputProps={{
                             id: 'body'
                         }}
@@ -56,7 +75,7 @@ function PostField({ status, setStatus }) {
                 <Button onClick={setStatus} size='small' variant='outlined' color='error'>
                     Cancel
                 </Button>
-                <Button autoFocus onClick={setStatus} size='small' variant='contained' color='primary'>
+                <Button autoFocus onClick={handlerSubmit} size='small' variant='contained' color='primary'>
                     Create
                 </Button>
             </DialogActions>
